@@ -8,7 +8,12 @@ async function generateQRCode(req, res) {
     const sessionId = uuidv4();
 
     const client = new Client({
-        authStrategy: new LocalAuth({ clientId: sessionId })
+        authStrategy: new LocalAuth({ clientId: sessionId }),
+        puppeteer: {
+           // executablePath: process.env.CHROME_BIN || 'google-chrome',
+            //headless: true,
+            args: ['--no-sandbox']
+        }
     });
 
     client.on('qr', (qr) => {
