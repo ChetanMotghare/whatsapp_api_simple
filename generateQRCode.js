@@ -18,11 +18,11 @@ async function generateQRCode(req, res) {
 
     client.on('qr', (qr) => {
         const qrCodeImage = qrImage.imageSync(qr, { type: 'png' });
-        const dataUrl = `data:image/png;base64,${qrCodeImage.toString('base64')}`;
-        res.send({ sessionId, qrCodeImage: dataUrl });
+      /*  const dataUrl = `data:image/png;base64,${qrCodeImage.toString('base64')}`;
+        res.send({ sessionId, qrCodeImage: dataUrl });*/
 
-        /*  res.writeHead(200, { 'Content-Type': 'image/png' });
-          res.end(qrCodeImage);*/
+         res.writeHead(200, { 'Content-Type': 'image/png' });
+          res.end(qrCodeImage);
     });
 
     client.on('ready', () => {
